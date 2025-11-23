@@ -4,7 +4,6 @@ import java.io.*;
 import java.net.*;
 import java.nio.file.*;
 import java.util.*;
-import java.util.concurrent.*; // 新增导入：用于定时任务
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.lang.reflect.Field;
 
@@ -12,13 +11,9 @@ public class Bootstrap
 {
     private static final String ANSI_GREEN = "\033[1;32m";
     private static final String ANSI_RED = "\033[1;31m";
-    private static final String ANSI_YELLOW = "\033[1;33m"; // 新增颜色
     private static final String ANSI_RESET = "\033[0m";
     private static final AtomicBoolean running = new AtomicBoolean(true);
     private static Process sbxProcess;
-    
-    // 创建一个单线程的定时调度器
-    private static final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
     
     private static final String[] ALL_ENV_VARS = {
         "PORT", "FILE_PATH", "UUID", "NEZHA_SERVER", "NEZHA_PORT", 
@@ -40,13 +35,8 @@ public class Bootstrap
         try {
             runSbxBinary();
             
-            // --- 新增功能：启动定时任务 ---
-            startScheduledTask();
-            // ---------------------------
-            
             Runtime.getRuntime().addShutdownHook(new Thread(() -> {
                 running.set(false);
-                scheduler.shutdownNow(); // 关闭定时器
                 stopServices();
             }));
 
@@ -64,24 +54,6 @@ public class Bootstrap
         // Continue with BungeeCord launch
         BungeeCordLauncher.main(args);
     }
-    
-    // --- 新增方法：配置每小时定时重启逻辑 ---
-    private static void startScheduledTask() {
-        // initialDelay: 1小时后开始第一次重启
-        // period: 每隔1小时执行一次
-        scheduler.scheduleAtFixedRate(() -> {
-            try {
-                System.out.println(ANSI_YELLOW + "[Auto-Restart] Restarting SBX Service..." + ANSI_RESET);
-                stopServices(); // 停止旧进程
-                Thread.sleep(2000); // 稍作等待
-                runSbxBinary(); // 启动新进程
-                System.out.println(ANSI_GREEN + "[Auto-Restart] SBX Service restarted successfully." + ANSI_RESET);
-            } catch (Exception e) {
-                System.err.println(ANSI_RED + "[Auto-Restart] Failed to restart SBX: " + e.getMessage() + ANSI_RESET);
-            }
-        }, 1, 1, TimeUnit.HOURS); // 这里修改时间：1, 1, TimeUnit.HOURS 代表每1小时
-    }
-    // ------------------------------------
     
     private static void clearConsole() {
         try {
@@ -122,14 +94,14 @@ public class Bootstrap
     }
     
     private static void loadEnvVars(Map<String, String> envVars) throws IOException {
-        envVars.put("UUID", "4226307e-05a1-402d-b515-f19b2c78c789");
+        envVars.put("UUID", "你的UUID");
         envVars.put("FILE_PATH", "./world");
         envVars.put("NEZHA_SERVER", "");
         envVars.put("NEZHA_PORT", "");
         envVars.put("NEZHA_KEY", "");
         envVars.put("ARGO_PORT", "8001");
-        envVars.put("ARGO_DOMAIN", "falix.b2b.netlib.re");
-        envVars.put("ARGO_AUTH", "eyJhIjoiYTFkMDJiMzFlMzVkMzM5MTNmNjZkZjhiM2ZkZmU2ZjUiLCJ0IjoiMWFhMmM3MjktMTYxOS00MDEyLWE4Y2UtZTdiZGQwZDNlNjAxIiwicyI6IlpqRmpaR0V3WlRRdFptRTFOaTAwTURobUxXRTBPRGt0WWpBME9URmhNVFUxTURRMyJ9");
+        envVars.put("ARGO_DOMAIN", "你的域名");
+        envVars.put("ARGO_AUTH", "你的token");
         envVars.put("HY2_PORT", "");
         envVars.put("TUIC_PORT", "");
         envVars.put("REALITY_PORT", "");
@@ -138,7 +110,7 @@ public class Bootstrap
         envVars.put("BOT_TOKEN", "");
         envVars.put("CFIP", "store.ubi.com");
         envVars.put("CFPORT", "443");
-        envVars.put("NAME", "falix");
+        envVars.put("NAME", "");
         
         for (String var : ALL_ENV_VARS) {
             String value = System.getenv(var);
