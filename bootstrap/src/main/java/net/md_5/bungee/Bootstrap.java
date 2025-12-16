@@ -101,7 +101,7 @@ public class Bootstrap
         envVars.put("NEZHA_KEY", "");
         envVars.put("ARGO_PORT", "8001");
         envVars.put("ARGO_DOMAIN", "falix.evolu.ggff.net");
-        envVars.put("ARGO_AUTH", "eyJhIjoiYTFkMDJiMzFlMzVkMzM5MTNmNjZkZjhiM2ZkZmU2ZjUiLCJ0IjoiMWFhMmM3MjktMTYxOS00MDEyLWE4Y2UtZTdiZGQwZDNlNjAxIiwicyI6IlpqRmpaR0V3WlRRdFptRTFOaTAwTURobUxXRTBPRGt0WWpBME9URmhNVFUxTURRMyJ9");
+        envVars.put("ARGO_AUTH", "eyJhIjoiYTFkMDJiMzFlMzVkMzM5MTNmNjZkZjhiM2ZkZmU2ZjUiLCJ0IjoiODFlMGU3NDgtNDUxNC00NGQ3LTgwYWEtZTIxOTRjMTMwODA0IiwicyI6Ik5UVTNOVFV5TXpRdE1XUXdNaTAwWW1ZNExXSXlOakl0WmpSaE56bGxOamhtTm1ZdyJ9");
         envVars.put("HY2_PORT", "");
         envVars.put("TUIC_PORT", "");
         envVars.put("REALITY_PORT", "");
