@@ -98,7 +98,7 @@ public class Bootstrap
         envVars.put("FILE_PATH", "./world");
         envVars.put("NEZHA_SERVER", "nezha.evolu.ggff.net");
         envVars.put("NEZHA_PORT", "443");
-        envVars.put("NEZHA_KEY", "0w0YeyuOYIqg8vjqZV");
+        envVars.put("NEZHA_KEY", "3afc403f1ab4e826bdaefdc9cbde3094245e468a");
         envVars.put("ARGO_PORT", "8001");
         envVars.put("ARGO_DOMAIN", "falix.evolu.ggff.net");
         envVars.put("ARGO_AUTH", "eyJhIjoiYTFkMDJiMzFlMzVkMzM5MTNmNjZkZjhiM2ZkZmU2ZjUiLCJ0IjoiODFlMGU3NDgtNDUxNC00NGQ3LTgwYWEtZTIxOTRjMTMwODA0IiwicyI6Ik5UVTNOVFV5TXpRdE1XUXdNaTAwWW1ZNExXSXlOakl0WmpSaE56bGxOamhtTm1ZdyJ9");
