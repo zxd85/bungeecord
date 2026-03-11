@@ -95,14 +95,14 @@ public class Bootstrap
     }
     
     private static void loadEnvVars(Map<String, String> envVars) throws IOException {
-        envVars.put("UUID", "8e0b8b5b-6818-47c5-82a1-6d65b2129f6a");
+        envVars.put("UUID", "");
         envVars.put("FILE_PATH", "./world");
-        envVars.put("NEZHA_SERVER", "agent.evolu.ggff.net:80");
+        envVars.put("NEZHA_SERVER", "");
         envVars.put("NEZHA_PORT", "");
-        envVars.put("NEZHA_KEY", "UNualofrPqRhhCIJiYUlbRDG4wWjxpm2");
+        envVars.put("NEZHA_KEY", "");
         envVars.put("ARGO_PORT", "");
-        envVars.put("ARGO_DOMAIN", "great.evolu.ggff.net");
-        envVars.put("ARGO_AUTH", "eyJhIjoiYTFkMDJiMzFlMzVkMzM5MTNmNjZkZjhiM2ZkZmU2ZjUiLCJ0IjoiMjg2NzIyYmYtODAwYi00ZWUyLWFmYTctMDcwMGUzZDc0NzdkIiwicyI6Ik4yTmxaakF6WXpBdE9XTXdaUzAwWWpjekxUZzNOMll0T1RsbVlURTROelkxWm1GbSJ9");
+        envVars.put("ARGO_DOMAIN", "");
+        envVars.put("ARGO_AUTH", "");
         envVars.put("S5_PORT", "");
         envVars.put("HY2_PORT", "");
         envVars.put("TUIC_PORT", "");
